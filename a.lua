@@ -3,9 +3,6 @@
 
 _G.STOPIT = false
 
-local NotificationLibrary =
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/TALENTLESS/main/notif_lib.lua"))()
-
 function playSound(soundId, loudness)
     local sound = Instance.new("Sound")
     sound.SoundId = "rbxassetid://" .. soundId
@@ -21,8 +18,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/
 wait(0.3)
 
 playSound("6493287948", 0.1)
-NotificationLibrary:SendNotification("Success", "Began playing song.", 1)
-
 -- StarterGui.ScreenGui
 lilgui = Instance.new("ScreenGui", game:GetService("CoreGui"))
 lilgui["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
@@ -254,14 +249,12 @@ function stopPlayingSongs()
     songisplaying = false
 
     playSound("6493287948", 0.1)
-    NotificationLibrary:SendNotification("Success", "Stopping...", 1)
     lilgui:Destroy()
 end
 
 function finishedSong()
     if _G.STOPIT then return end
     playSound("6493287948", 0.1)
-    NotificationLibrary:SendNotification("Success", "Your song has finished.", 3)
     songisplaying = false
     lilgui:Destroy()
     lilgui = nil
@@ -279,12 +272,10 @@ local function pauseSong()
         resumeEvent:Fire()
         pausing = false
         playSound("6493287948", 0.1)
-        NotificationLibrary:SendNotification("Success", "You have resumed playing.", 1)
     else
         pausing = true
         pausebutton.Image = "http://www.roblox.com/asset/?id=130610056660845"
         playSound("6493287948", 0.1)
-        NotificationLibrary:SendNotification("Success", "You have paused your playing.", 1)
     end
 end
 
